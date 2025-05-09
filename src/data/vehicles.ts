@@ -53,7 +53,7 @@ export const vehicles: Vehicle[] = [
     year: 2024,
     category: 'SUV',
     price: 1700,
-    images: ['/images/cars/cupra-formentor.jpg'],
+    images: ['/images/cars/S5-gamme--cupra-formentor.jpg'],
     description: 'Le Cupra Formentor 2024 allie sportivité et praticité dans un SUV compact au caractère affirmé.',
     features: ['Essence', '310 ch', 'Mode Sport', 'Intérieur Alcantara']
   },
@@ -63,7 +63,7 @@ export const vehicles: Vehicle[] = [
     year: 2025,
     category: 'Compacte',
     price: 800,
-    images: ['/images/cars/S5-gamme--cupra-formentor.jpg'],
+    images: ['/images/cars/golf8.webp'],
     description: 'La Golf 8 2025 représente l\'évolution d\'une icône, avec sa technologie avancée et son design épuré.',
     features: ['Essence/Diesel', '150 ch', 'Cockpit numérique', 'Aide à la conduite']
   },
@@ -113,7 +113,7 @@ export const vehicles: Vehicle[] = [
     year: 2024,
     category: 'Coupé',
     price: 1600,
-    images: ['/images/cars/cla.jpg'],
+    images: ['/images/cars/cla.webp'],
     description: 'La Mercedes CLA 2024 séduit par son design coupé élégant et ses performances dynamiques.',
     features: ['Essence', '224 ch', 'MBUX', 'Éclairage d\'ambiance']
   }

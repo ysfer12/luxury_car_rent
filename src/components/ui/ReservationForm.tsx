@@ -177,10 +177,10 @@ export default function ReservationForm({ vehicleId = null }: ReservationFormPro
   const minReturnDate = formData.pickupDate || today;
 
   return (
-    <div className="bg-white rounded-xl">
+    <div className="bg-white rounded-xl shadow-lg border border-gray-100">
       {success ? (
         <div className="flex flex-col items-center justify-center py-10 px-6 text-center">
-          <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6">
+          <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6 animate-bounce">
             <CheckCircle size={32} className="text-green-600" />
           </div>
           <h3 className="text-2xl font-bold text-charcoal-800 mb-3">Réservation Confirmée</h3>
@@ -188,12 +188,12 @@ export default function ReservationForm({ vehicleId = null }: ReservationFormPro
             Votre demande de réservation a été envoyée avec succès. Nous vous contacterons dans les plus brefs délais pour confirmer les détails.
           </p>
           
-          <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-6 max-w-md text-left w-full">
+          <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-6 max-w-md text-left w-full shadow-sm">
             <h4 className="font-medium text-charcoal-800 mb-3">Détails de votre réservation</h4>
             <div className="space-y-2">
               <p className="text-sm flex justify-between">
                 <span className="text-charcoal-500">Référence:</span>
-                <span className="font-medium">{reservationRef}</span>
+                <span className="font-medium text-gold-600">{reservationRef}</span>
               </p>
               <p className="text-sm flex justify-between">
                 <span className="text-charcoal-500">Date de prise en charge:</span>
@@ -210,7 +210,7 @@ export default function ReservationForm({ vehicleId = null }: ReservationFormPro
             </div>
           </div>
           
-          <div className="bg-blue-50 border border-blue-100 rounded-lg p-4 mb-4 max-w-md text-left w-full">
+          <div className="bg-blue-50 border border-blue-100 rounded-lg p-4 mb-4 max-w-md text-left w-full shadow-sm">
             <div className="flex items-start">
               <Mail className="text-blue-500 mr-3 mt-1 flex-shrink-0" size={18} />
               <div>
@@ -230,7 +230,7 @@ export default function ReservationForm({ vehicleId = null }: ReservationFormPro
         <form onSubmit={handleSubmit}>
           {/* Error display */}
           {error && (
-            <div className="bg-red-50 border-l-4 border-red-500 p-4 mb-6 mx-6 mt-6 sm:mx-8 sm:mt-8 rounded">
+            <div className="bg-red-50 border-l-4 border-red-500 p-4 mb-6 mx-6 mt-6 sm:mx-8 sm:mt-8 rounded animate-fadeIn">
               <div className="flex items-start">
                 <AlertCircle className="text-red-500 mr-3 mt-0.5 flex-shrink-0" size={18} />
                 <p className="text-red-700">{error}</p>
@@ -240,9 +240,9 @@ export default function ReservationForm({ vehicleId = null }: ReservationFormPro
           
           {step === 1 && (
             <div className="p-6 sm:p-8 bg-white rounded-t-xl">
-              <div className="flex mb-6">
+              <div className="flex mb-8">
                 <div className="flex-1 text-center">
-                  <div className="mx-auto w-8 h-8 rounded-full bg-gold-500 flex items-center justify-center text-white font-medium text-sm">
+                  <div className="mx-auto w-10 h-10 rounded-full bg-gold-500 flex items-center justify-center text-white font-medium text-sm shadow-gold">
                     1
                   </div>
                   <p className="text-xs mt-2 font-medium text-gold-600">Dates</p>
@@ -251,7 +251,7 @@ export default function ReservationForm({ vehicleId = null }: ReservationFormPro
                   <div className="h-[2px] w-full bg-gray-200"></div>
                 </div>
                 <div className="flex-1 text-center">
-                  <div className="mx-auto w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center text-charcoal-500 font-medium text-sm">
+                  <div className="mx-auto w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-charcoal-500 font-medium text-sm">
                     2
                   </div>
                   <p className="text-xs mt-2 font-medium text-charcoal-400">Informations</p>
@@ -266,7 +266,7 @@ export default function ReservationForm({ vehicleId = null }: ReservationFormPro
                     Date de prise en charge
                   </label>
                   <div className="relative">
-                    <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-charcoal-400">
+                    <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-gold-500">
                       <Calendar size={18} />
                     </div>
                     <input
@@ -274,7 +274,7 @@ export default function ReservationForm({ vehicleId = null }: ReservationFormPro
                       id="pickupDate"
                       name="pickupDate"
                       min={today}
-                      className="pl-10 w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-gold-500 focus:border-gold-500 bg-white"
+                      className="pl-10 w-full p-2.5 border border-gray-300 rounded-md focus:ring-2 focus:ring-gold-500 focus:border-gold-500 bg-white/95 shadow-sm hover:shadow transition-shadow"
                       required
                       value={formData.pickupDate}
                       onChange={handleChange}
@@ -287,7 +287,7 @@ export default function ReservationForm({ vehicleId = null }: ReservationFormPro
                     Date de retour
                   </label>
                   <div className="relative">
-                    <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-charcoal-400">
+                    <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-gold-500">
                       <Calendar size={18} />
                     </div>
                     <input
@@ -295,7 +295,7 @@ export default function ReservationForm({ vehicleId = null }: ReservationFormPro
                       id="returnDate"
                       name="returnDate"
                       min={minReturnDate}
-                      className="pl-10 w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-gold-500 focus:border-gold-500 bg-white"
+                      className="pl-10 w-full p-2.5 border border-gray-300 rounded-md focus:ring-2 focus:ring-gold-500 focus:border-gold-500 bg-white/95 shadow-sm hover:shadow transition-shadow"
                       required
                       value={formData.returnDate}
                       onChange={handleChange}
@@ -308,13 +308,13 @@ export default function ReservationForm({ vehicleId = null }: ReservationFormPro
                     Heure de prise en charge
                   </label>
                   <div className="relative">
-                    <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-charcoal-400">
+                    <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-gold-500">
                       <Clock size={18} />
                     </div>
                     <select
                       id="pickupTime"
                       name="pickupTime"
-                      className="pl-10 w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-gold-500 focus:border-gold-500 bg-white appearance-none"
+                      className="pl-10 w-full p-2.5 border border-gray-300 rounded-md focus:ring-2 focus:ring-gold-500 focus:border-gold-500 bg-white/95 shadow-sm hover:shadow transition-shadow appearance-none"
                       value={formData.pickupTime}
                       onChange={handleChange}
                     >
@@ -343,13 +343,13 @@ export default function ReservationForm({ vehicleId = null }: ReservationFormPro
                     Heure de retour
                   </label>
                   <div className="relative">
-                    <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-charcoal-400">
+                    <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-gold-500">
                       <Clock size={18} />
                     </div>
                     <select
                       id="returnTime"
                       name="returnTime"
-                      className="pl-10 w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-gold-500 focus:border-gold-500 bg-white appearance-none"
+                      className="pl-10 w-full p-2.5 border border-gray-300 rounded-md focus:ring-2 focus:ring-gold-500 focus:border-gold-500 bg-white/95 shadow-sm hover:shadow transition-shadow appearance-none"
                       value={formData.returnTime}
                       onChange={handleChange}
                     >
@@ -378,13 +378,13 @@ export default function ReservationForm({ vehicleId = null }: ReservationFormPro
                     Lieu de prise en charge
                   </label>
                   <div className="relative">
-                    <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-charcoal-400">
+                    <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-gold-500">
                       <MapPin size={18} />
                     </div>
                     <select
                       id="pickupLocation"
                       name="pickupLocation"
-                      className="pl-10 w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-gold-500 focus:border-gold-500 bg-white appearance-none"
+                      className="pl-10 w-full p-2.5 border border-gray-300 rounded-md focus:ring-2 focus:ring-gold-500 focus:border-gold-500 bg-white/95 shadow-sm hover:shadow transition-shadow appearance-none"
                       value={formData.pickupLocation}
                       onChange={handleChange}
                     >
@@ -406,9 +406,9 @@ export default function ReservationForm({ vehicleId = null }: ReservationFormPro
               
               {/* Vehicle information if available */}
               {vehicleId && (
-                <div className="bg-gray-50 p-4 rounded-md mb-6">
+                <div className="bg-gold-50 p-4 rounded-md mb-6 border border-gold-100">
                   <p className="text-sm text-charcoal-600">
-                    Vous êtes en train de réserver: <span className="font-medium text-charcoal-800">{vehicleId.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}</span>
+                    Vous êtes en train de réserver: <span className="font-medium text-gold-700">{vehicleId.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}</span>
                   </p>
                 </div>
               )}
@@ -417,7 +417,7 @@ export default function ReservationForm({ vehicleId = null }: ReservationFormPro
                 <button
                   type="button"
                   onClick={() => setStep(2)}
-                  className="bg-gold-500 hover:bg-gold-600 text-white py-3 px-8 rounded-md transition-colors shadow-gold hover:shadow-lg font-medium"
+                  className="bg-gradient-to-r from-gold-600 to-gold-500 hover:from-gold-700 hover:to-gold-600 text-white py-3 px-8 rounded-md transition-all duration-300 shadow-gold hover:shadow-xl hover:scale-105 font-medium"
                 >
                   Continuer
                 </button>
@@ -427,10 +427,10 @@ export default function ReservationForm({ vehicleId = null }: ReservationFormPro
           
           {step === 2 && (
             <div className="p-6 sm:p-8 bg-white rounded-t-xl">
-              <div className="flex mb-6">
+              <div className="flex mb-8">
                 <div className="flex-1 text-center">
-                  <div className="mx-auto w-8 h-8 rounded-full bg-gold-100 border-2 border-gold-500 flex items-center justify-center text-gold-600 font-medium text-sm">
-                    <CheckCircle size={14} className="text-gold-600" />
+                  <div className="mx-auto w-10 h-10 rounded-full bg-gold-100 border-2 border-gold-500 flex items-center justify-center text-gold-600 font-medium text-sm">
+                    <CheckCircle size={16} className="text-gold-600" />
                   </div>
                   <p className="text-xs mt-2 font-medium text-gold-600">Dates</p>
                 </div>
@@ -438,7 +438,7 @@ export default function ReservationForm({ vehicleId = null }: ReservationFormPro
                   <div className="h-[2px] w-full bg-gold-500"></div>
                 </div>
                 <div className="flex-1 text-center">
-                  <div className="mx-auto w-8 h-8 rounded-full bg-gold-500 flex items-center justify-center text-white font-medium text-sm">
+                  <div className="mx-auto w-10 h-10 rounded-full bg-gold-500 flex items-center justify-center text-white font-medium text-sm shadow-gold">
                     2
                   </div>
                   <p className="text-xs mt-2 font-medium text-gold-600">Informations</p>
@@ -453,14 +453,14 @@ export default function ReservationForm({ vehicleId = null }: ReservationFormPro
                     Prénom
                   </label>
                   <div className="relative">
-                    <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-charcoal-400">
+                    <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-gold-500">
                       <User size={18} />
                     </div>
                     <input
                       type="text"
                       id="firstName"
                       name="firstName"
-                      className="pl-10 w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-gold-500 focus:border-gold-500 bg-white"
+                      className="pl-10 w-full p-2.5 border border-gray-300 rounded-md focus:ring-2 focus:ring-gold-500 focus:border-gold-500 bg-white/95 shadow-sm hover:shadow transition-shadow"
                       required
                       value={formData.firstName}
                       onChange={handleChange}
@@ -473,14 +473,14 @@ export default function ReservationForm({ vehicleId = null }: ReservationFormPro
                     Nom
                   </label>
                   <div className="relative">
-                    <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-charcoal-400">
+                    <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-gold-500">
                       <User size={18} />
                     </div>
                     <input
                       type="text"
                       id="lastName"
                       name="lastName"
-                      className="pl-10 w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-gold-500 focus:border-gold-500 bg-white"
+                      className="pl-10 w-full p-2.5 border border-gray-300 rounded-md focus:ring-2 focus:ring-gold-500 focus:border-gold-500 bg-white/95 shadow-sm hover:shadow transition-shadow"
                       required
                       value={formData.lastName}
                       onChange={handleChange}
@@ -493,14 +493,14 @@ export default function ReservationForm({ vehicleId = null }: ReservationFormPro
                     Email
                   </label>
                   <div className="relative">
-                    <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-charcoal-400">
+                    <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-gold-500">
                       <Mail size={18} />
                     </div>
                     <input
                       type="email"
                       id="email"
                       name="email"
-                      className="pl-10 w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-gold-500 focus:border-gold-500 bg-white"
+                      className="pl-10 w-full p-2.5 border border-gray-300 rounded-md focus:ring-2 focus:ring-gold-500 focus:border-gold-500 bg-white/95 shadow-sm hover:shadow transition-shadow"
                       required
                       value={formData.email}
                       onChange={handleChange}
@@ -513,14 +513,14 @@ export default function ReservationForm({ vehicleId = null }: ReservationFormPro
                     Téléphone
                   </label>
                   <div className="relative">
-                    <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-charcoal-400">
+                    <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-gold-500">
                       <Phone size={18} />
                     </div>
                     <input
                       type="tel"
                       id="phone"
                       name="phone"
-                      className="pl-10 w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-gold-500 focus:border-gold-500 bg-white"
+                      className="pl-10 w-full p-2.5 border border-gray-300 rounded-md focus:ring-2 focus:ring-gold-500 focus:border-gold-500 bg-white/95 shadow-sm hover:shadow transition-shadow"
                       required
                       value={formData.phone}
                       onChange={handleChange}
@@ -536,7 +536,7 @@ export default function ReservationForm({ vehicleId = null }: ReservationFormPro
                     id="message"
                     name="message"
                     rows={3}
-                    className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-gold-500 focus:border-gold-500 bg-white"
+                    className="w-full p-2.5 border border-gray-300 rounded-md focus:ring-2 focus:ring-gold-500 focus:border-gold-500 bg-white/95 shadow-sm hover:shadow transition-shadow"
                     value={formData.message}
                     onChange={handleChange}
                     placeholder="Demandes spéciales ou informations complémentaires..."
@@ -548,7 +548,7 @@ export default function ReservationForm({ vehicleId = null }: ReservationFormPro
                 <button
                   type="button"
                   onClick={() => setStep(1)}
-                  className="border border-gray-300 bg-white text-charcoal-700 hover:bg-gray-50 py-3 px-6 rounded-md transition-colors font-medium"
+                  className="border border-gray-300 bg-white text-charcoal-700 hover:bg-gray-50 py-3 px-6 rounded-md transition-all duration-300 shadow-sm hover:shadow font-medium"
                 >
                   Retour
                 </button>
@@ -556,8 +556,8 @@ export default function ReservationForm({ vehicleId = null }: ReservationFormPro
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className={`bg-gold-500 hover:bg-gold-600 text-white py-3 px-8 rounded-md transition-colors shadow-gold hover:shadow-lg font-medium flex items-center justify-center min-w-[160px] ${
-                    isSubmitting ? 'bg-gold-400 cursor-not-allowed' : ''
+                  className={`bg-gradient-to-r from-gold-600 to-gold-500 hover:from-gold-700 hover:to-gold-600 text-white py-3 px-8 rounded-md transition-all duration-300 shadow-gold hover:shadow-xl font-medium flex items-center justify-center min-w-[160px] ${
+                    isSubmitting ? 'bg-gold-400 cursor-not-allowed opacity-80' : 'hover:scale-105'
                   }`}
                 >
                   {isSubmitting ? (

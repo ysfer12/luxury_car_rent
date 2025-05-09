@@ -22,13 +22,13 @@ export default function Navigation(): JSX.Element {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-3' : 'bg-transparent py-5'
+        scrolled ? 'bg-white/95 backdrop-blur-md shadow-md py-3' : 'bg-transparent py-5'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <nav className="flex items-center justify-between">
-          <Link href="/" className="flex items-center">
-            <div className="font-serif text-2xl font-bold tracking-wider">
+          <Link href="/" className="flex items-center group">
+            <div className="font-serif text-2xl font-bold tracking-wider transition-transform duration-300 group-hover:scale-105">
               <span className={scrolled ? 'text-black' : 'text-white'}>LUXURY</span>
               <span className="text-gold-500 ml-1">CARS</span>
             </div>
@@ -40,7 +40,7 @@ export default function Navigation(): JSX.Element {
               href="/"
               className={`px-4 py-2 rounded-md ${
                 scrolled ? 'text-gray-800 hover:bg-gray-100' : 'text-white hover:bg-white/10'
-              } transition-colors font-medium`}
+              } transition-all duration-300 font-medium hover:scale-105`}
             >
               Accueil
             </Link>
@@ -48,7 +48,7 @@ export default function Navigation(): JSX.Element {
               href="/vehicules"
               className={`px-4 py-2 rounded-md ${
                 scrolled ? 'text-gray-800 hover:bg-gray-100' : 'text-white hover:bg-white/10'
-              } transition-colors font-medium`}
+              } transition-all duration-300 font-medium hover:scale-105`}
             >
               Nos Véhicules
             </Link>
@@ -56,11 +56,11 @@ export default function Navigation(): JSX.Element {
               <button
                 className={`flex items-center px-4 py-2 rounded-md ${
                   scrolled ? 'text-gray-800 hover:bg-gray-100' : 'text-white hover:bg-white/10'
-                } transition-colors font-medium`}
+                } transition-all duration-300 font-medium hover:scale-105`}
               >
-                Catégories <ChevronDown size={16} className="ml-1" />
+                Catégories <ChevronDown size={16} className="ml-1 transition-transform group-hover:rotate-180" />
               </button>
-              <div className="absolute top-full left-0 mt-1 w-60 bg-white/95 backdrop-blur-md shadow-xl rounded-md py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+              <div className="absolute top-full left-0 mt-1 w-60 bg-white/98 backdrop-blur-md shadow-gold rounded-md py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2">
                 <Link
                   href="/vehicules?category=suv"
                   className="block px-4 py-2 text-gray-800 hover:bg-gold-50 hover:text-gold-800 transition-colors"
@@ -97,7 +97,7 @@ export default function Navigation(): JSX.Element {
               href="/reservation"
               className={`px-4 py-2 rounded-md ${
                 scrolled ? 'text-gray-800 hover:bg-gray-100' : 'text-white hover:bg-white/10'
-              } transition-colors font-medium`}
+              } transition-all duration-300 font-medium hover:scale-105`}
             >
               Réservation
             </Link>
@@ -105,7 +105,7 @@ export default function Navigation(): JSX.Element {
               href="/contact"
               className={`px-4 py-2 rounded-md ${
                 scrolled ? 'text-gray-800 hover:bg-gray-100' : 'text-white hover:bg-white/10'
-              } transition-colors font-medium`}
+              } transition-all duration-300 font-medium hover:scale-105`}
             >
               Contact
             </Link>
@@ -116,14 +116,14 @@ export default function Navigation(): JSX.Element {
               href="tel:+212600000000"
               className={`flex items-center px-4 py-2 rounded-md ${
                 scrolled ? 'text-gray-800 hover:bg-gray-100' : 'text-white hover:bg-white/10'
-              } transition-colors font-medium`}
+              } transition-all duration-300 font-medium`}
             >
               <Phone size={18} className="mr-2" />
               +212 6 00 00 00 00
             </a>
             <Link
               href="/reservation"
-              className="ml-4 bg-gradient-to-r from-gold-600 to-gold-500 hover:from-gold-700 hover:to-gold-600 text-white py-2 px-6 rounded-md transition-all font-medium shadow-md hover:shadow-lg"
+              className="ml-4 bg-gradient-to-r from-gold-600 to-gold-500 hover:from-gold-700 hover:to-gold-600 text-white py-2 px-6 rounded-md transition-all duration-300 font-medium shadow-gold hover:shadow-xl hover:scale-105"
             >
               Réserver
             </Link>
@@ -134,7 +134,7 @@ export default function Navigation(): JSX.Element {
             onClick={() => setIsOpen(!isOpen)}
             className={`lg:hidden p-2 rounded-md ${
               scrolled ? 'text-gray-800 hover:bg-gray-100' : 'text-white hover:bg-white/10'
-            } focus:outline-none`}
+            } focus:outline-none transition-transform duration-300 active:scale-90`}
             aria-label={isOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -143,17 +143,17 @@ export default function Navigation(): JSX.Element {
 
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="lg:hidden mt-4 pb-4 bg-white/95 backdrop-blur-md rounded-lg shadow-lg p-4">
+          <div className="lg:hidden mt-4 pb-4 bg-white/95 backdrop-blur-md rounded-lg shadow-lg p-4 animate-fadeIn">
             <Link
               href="/"
-              className="block py-2 px-4 rounded-md text-gray-800 hover:bg-gold-50 hover:text-gold-800"
+              className="block py-2 px-4 rounded-md text-gray-800 hover:bg-gold-50 hover:text-gold-800 transition-colors"
               onClick={() => setIsOpen(false)}
             >
               Accueil
             </Link>
             <Link
               href="/vehicules"
-              className="block py-2 px-4 rounded-md text-gray-800 hover:bg-gold-50 hover:text-gold-800"
+              className="block py-2 px-4 rounded-md text-gray-800 hover:bg-gold-50 hover:text-gold-800 transition-colors"
               onClick={() => setIsOpen(false)}
             >
               Nos Véhicules
@@ -163,35 +163,35 @@ export default function Navigation(): JSX.Element {
               <div className="pl-4 space-y-1">
                 <Link
                   href="/vehicules?category=suv"
-                  className="block py-1 px-3 rounded-md text-gray-700 hover:bg-gold-50 hover:text-gold-800"
+                  className="block py-1 px-3 rounded-md text-gray-700 hover:bg-gold-50 hover:text-gold-800 transition-colors"
                   onClick={() => setIsOpen(false)}
                 >
                   SUV
                 </Link>
                 <Link
                   href="/vehicules?category=berline"
-                  className="block py-1 px-3 rounded-md text-gray-700 hover:bg-gold-50 hover:text-gold-800"
+                  className="block py-1 px-3 rounded-md text-gray-700 hover:bg-gold-50 hover:text-gold-800 transition-colors"
                   onClick={() => setIsOpen(false)}
                 >
                   Berline
                 </Link>
                 <Link
                   href="/vehicules?category=citadine"
-                  className="block py-1 px-3 rounded-md text-gray-700 hover:bg-gold-50 hover:text-gold-800"
+                  className="block py-1 px-3 rounded-md text-gray-700 hover:bg-gold-50 hover:text-gold-800 transition-colors"
                   onClick={() => setIsOpen(false)}
                 >
                   Citadine
                 </Link>
                 <Link
                   href="/vehicules?category=coupe"
-                  className="block py-1 px-3 rounded-md text-gray-700 hover:bg-gold-50 hover:text-gold-800"
+                  className="block py-1 px-3 rounded-md text-gray-700 hover:bg-gold-50 hover:text-gold-800 transition-colors"
                   onClick={() => setIsOpen(false)}
                 >
                   Coupé
                 </Link>
                 <Link
                   href="/vehicules?category=cabriolet"
-                  className="block py-1 px-3 rounded-md text-gray-700 hover:bg-gold-50 hover:text-gold-800"
+                  className="block py-1 px-3 rounded-md text-gray-700 hover:bg-gold-50 hover:text-gold-800 transition-colors"
                   onClick={() => setIsOpen(false)}
                 >
                   Cabriolet
@@ -200,14 +200,14 @@ export default function Navigation(): JSX.Element {
             </div>
             <Link
               href="/reservation"
-              className="block py-2 px-4 rounded-md text-gray-800 hover:bg-gold-50 hover:text-gold-800"
+              className="block py-2 px-4 rounded-md text-gray-800 hover:bg-gold-50 hover:text-gold-800 transition-colors"
               onClick={() => setIsOpen(false)}
             >
               Réservation
             </Link>
             <Link
               href="/contact"
-              className="block py-2 px-4 rounded-md text-gray-800 hover:bg-gold-50 hover:text-gold-800"
+              className="block py-2 px-4 rounded-md text-gray-800 hover:bg-gold-50 hover:text-gold-800 transition-colors"
               onClick={() => setIsOpen(false)}
             >
               Contact
@@ -215,14 +215,14 @@ export default function Navigation(): JSX.Element {
             <div className="mt-4 pt-4 border-t border-gray-200">
               <a
                 href="tel:+212600000000"
-                className="block py-2 px-4 rounded-md text-gray-800 hover:bg-gold-50 hover:text-gold-800 flex items-center"
+                className="block py-2 px-4 rounded-md text-gray-800 hover:bg-gold-50 hover:text-gold-800 flex items-center transition-colors"
               >
                 <Phone size={18} className="mr-2" />
                 +212 6 00 00 00 00
               </a>
               <Link
                 href="/reservation"
-                className="block mt-4 bg-gradient-to-r from-gold-600 to-gold-500 hover:from-gold-700 hover:to-gold-600 text-white py-3 px-4 rounded-md text-center font-medium shadow-md hover:shadow-lg"
+                className="block mt-4 bg-gradient-to-r from-gold-600 to-gold-500 hover:from-gold-700 hover:to-gold-600 text-white py-3 px-4 rounded-md text-center font-medium shadow-gold hover:shadow-xl transition-all duration-300"
                 onClick={() => setIsOpen(false)}
               >
                 Réserver
